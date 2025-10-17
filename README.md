@@ -1,3 +1,2 @@
 # custom-cpu-emulator
-THIS IS AN OUTDATED VERSION I WILL UPDATE IT ASAP
-IT DOESNT WORK WITH THE CURRENT ASSEMBLER
+Updated version with the Von Neumann architecture
