@@ -113,6 +113,7 @@ If we want to pop from the stack, lets say that we want to pop a value and add 2
 04 - store to register 4
 
 
+# example program
 So a program that adds 5 and 3 into r1 and subtracts 2 from it and stores the result to ram at the address 000DF3 would look like this:
 06C0050301C0F30007C00D0008C0000009410102103F000000
 06 - code lenght
