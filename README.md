@@ -1,6 +1,7 @@
 # custom-cpu-emulator
 Updated version with the Von Neumann architecture.
 
+# overview
 This is an emulator for a custom 8-bit CPU.
 It has s 24-bit address bus that is used for both branching and ram access.
 The instructions are made of 4 bytes each written in hexadecimal, one for the instruction opcode, two for the inputs and one for the output (where we want to store the result).
@@ -13,6 +14,7 @@ this would add register 1 and register 2 and save the result into register 3
 02 - r2
 03 - r3
 
+# instruction set
 The instruction set includes the following istructions:
 OPCODE (HEX)  ASSEMBLY  DESCRIPTION
 ALU instructions:
@@ -35,6 +37,7 @@ Branch instructions:
 Other instructions:
 3F            brk       halts the CPU
 
+# flag handeling
 The zero flag is turned on when executing an ALU instruction if its result is zero,
 its turned off when executing an ALU instruction if the result isn't zero.
 The carry flag is turned on when executing the following instructions:
@@ -42,15 +45,19 @@ nor, and, xor, xnor,
 it can also turn on if the result of adding is grater than 255,
 or if the result is positive when subtracting.
 
+# immidiate values
 If we want to use immidiate values (hex numbers 0-FF) instead of registers and other memory, we add 80 (hex) to the instruction if the first input is an immidiate value and we add 40 (hex) if the second input is an immidiate value.
 
+# start of the code
 Firstly the first two digits of our hex code must be the lenght of the code interpreted as the number of instructions that we want to store to ram, if we make this number smaller than the actual number of instructions the CPU will only load the amount of instructions specified by this number ant the rest of the instructions will be ignored,
 this limits the number of instructions to 255 for now, 
 but i plan to make it use the first six digits so we can have 4194304 instructions (they are going to be limmited by ram size)
 
+# memory
 The CPU also has RAM and stack memory.
 It uses the Von Neumann arhitecture so the instructions are saved in ram and fetched when needed.
 
+# RAM
 To access RAM we first need to set the address that we want to read from or write to in r7, r8 and r9, 
 r7 holds the lowest byte, r8 holds the middle byte and r9 holds the highest byte.
 
@@ -89,6 +96,7 @@ But if we want to read from ram we can just set the address the same way as for 
 03 - second input (immidiate value 03)
 01 - store to register 1
 
+# stack memory
 The stack works in a simmilar way, but we dont need to set the address.
 If we want to push to the stack, lets say we were pushing the result of adding 10 (hex) to register 5, we would do something like this:
 40051011
