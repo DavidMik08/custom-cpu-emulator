@@ -178,6 +178,26 @@ If we want to pop from the stack, lets say that we want to pop a value and add 2
 
 
 
+# branching
+If we want to branch to a different address we need to set the address that we want to branch to in r7, r8 and r9.
+This is done the same way as we set the address for RAM.
+Then we execute the instruction that sets the flags that we want to check, and then we execute one of the branch instructions.
+
+Lets say that we want to branch to instruction 000040 (hex) if r1 and r2 are the same, we would write something like this:
+
+C0400007C0000008C00000090101020009000000
+
+C0400007 - Sets the low byte of the address
+
+C0000008 - Sets the middle byte of the address
+
+C0000009 - Sets the high byte of the address
+
+01010200 - Sets the zero flag if r1 and r2 are the same
+
+09000000 - Branches to the address if the zero flag is set
+
+
 # example program
 So a program that adds 5 and 3 into r1 and subtracts 2 from it and stores the result to ram at the address 000DF3 would look like this:
 
