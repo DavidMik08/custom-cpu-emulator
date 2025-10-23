@@ -108,7 +108,6 @@ public:
 
   void setAddr() {
     addr = registers[6] + registers[7]*256 + registers[8]*65536;
-    cout<<addr<<endl;
     return;
   }
 
@@ -262,7 +261,7 @@ void emulate(memory &mem) {
       mem.branch();
     }
     break;
-  case 63:
+  case 63:    // BRK
     mem.halt = true;
     cout<<"HALT"<<endl;
     break;
